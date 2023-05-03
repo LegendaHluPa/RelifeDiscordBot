@@ -28,7 +28,7 @@ public class SetupTicket {
             Button subjectDiscordPlayer = Button.primary("subjectDiscordMember", "Жалоба на пользователя дискорд");
             Button question = Button.primary("question", "Вопрос");
             textChannel.sendMessageEmbeds(embedBuilder.build()).setActionRow(subjectGamePlayer, subjectDiscordPlayer, question).queue();
-            event.getGuild().createCategory("Открытые жалоб").queue();
+            event.getGuild().createCategory("Открытые жалобы").queue();
 
 
 
