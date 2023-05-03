@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        JDA jda = JDABuilder.createLight("OTE3OTMyNTA0MDM0NDcxOTY2.G4Qydv.I41ZxVvG-CCKkHjjHTAgQXB_hrPYzX1Ev_yynM")
+        JDA jda = JDABuilder.createLight("OTE3OTMyNTA0MDM0NDcxOTY2.GSlmSG.qctfp2PMSAKGbga-OINslFhFd_2M7XIxIChr7g")
 
                     .disableCache(CacheFlag.MEMBER_OVERRIDES, CacheFlag.VOICE_STATE)
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
