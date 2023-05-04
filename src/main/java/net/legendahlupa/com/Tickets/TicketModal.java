@@ -9,6 +9,9 @@ import net.dv8tion.jda.api.interactions.modals.Modal;
 public class TicketModal {
 
     public void sendInGameModal(ButtonInteractionEvent event) {
+        TextInput IngameSender = TextInput.create("ingamesender", "Ваш ник", TextInputStyle.SHORT)
+                .setPlaceholder("Пример: Azirivka")
+                .build();
         TextInput IngameSubject = TextInput.create("ingamesubject", "Ник нарушитель", TextInputStyle.SHORT)
                 .setPlaceholder("Пример: LegendaHluPa")
                 .build();
@@ -21,7 +24,7 @@ public class TicketModal {
                 .setPlaceholder("Пример: https://imgur.com/ | https://www.youtube.com/")
                 .build();
         Modal modal = Modal.create("ingamesubjectmodal", "Жалоба на игрока сервера")
-                .addComponents(ActionRow.of(IngameSubject), ActionRow.of(IngameSubjectDescription), ActionRow.of(IngameSubjectURL))
+                .addComponents(ActionRow.of(IngameSender) ,ActionRow.of(IngameSubject), ActionRow.of(IngameSubjectDescription), ActionRow.of(IngameSubjectURL))
                 .build();
         event.replyModal(modal).queue();
 
