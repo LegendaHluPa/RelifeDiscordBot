@@ -12,7 +12,7 @@ public class TicketModal {
         TextInput IngameSender = TextInput.create("ingamesender", "Ваш ник", TextInputStyle.SHORT)
                 .setPlaceholder("Пример: Azirivka")
                 .build();
-        TextInput IngameSubject = TextInput.create("ingamesubject", "Ник нарушитель", TextInputStyle.SHORT)
+        TextInput IngameSubject = TextInput.create("ingamesubject", "Ник нарушителя", TextInputStyle.SHORT)
                 .setPlaceholder("Пример: LegendaHluPa")
                 .build();
 
@@ -21,7 +21,7 @@ public class TicketModal {
                 .build();
 
         TextInput IngameSubjectURL = TextInput.create("ingameurl", "Доказательство ", TextInputStyle.PARAGRAPH)
-                .setPlaceholder("Пример: https://imgur.com/ | https://www.youtube.com/")
+                .setPlaceholder("Пример: https://imgur.com/ | https://www.youtube.com/ или любой другой фото/видео-хостинг")
                 .build();
         Modal modal = Modal.create("ingamesubjectmodal", "Жалоба на игрока сервера")
                 .addComponents(ActionRow.of(IngameSender) ,ActionRow.of(IngameSubject), ActionRow.of(IngameSubjectDescription), ActionRow.of(IngameSubjectURL))
@@ -31,18 +31,18 @@ public class TicketModal {
     }
 
     public void sendDiscordModal(ButtonInteractionEvent event) {
-        TextInput DiscordSubject = TextInput.create("discordsubject", "Ник нарушитель", TextInputStyle.SHORT)
-                .setPlaceholder("Пример: Хлюпа#9766")
+        TextInput DiscordSubject = TextInput.create("discordsubject", "Ник нарушителя", TextInputStyle.SHORT)
+                .setPlaceholder("Пример: Чаёк Флеймус#1600")
                 .build();
 
         TextInput DiscordSubjectDescription = TextInput.create("discorddescription", "Описание нарушения", TextInputStyle.PARAGRAPH)
-                .setPlaceholder("Пример: Оскобительный ник")
+                .setPlaceholder("Пример: Оскорбил родных")
                 .build();
         TextInput DiscordSubjectURL = TextInput.create("discordurl", "Доказательство", TextInputStyle.PARAGRAPH)
-                .setPlaceholder("Пример: https://www.youtube.com/ или ссылка на сообщение")
+                .setPlaceholder("Пример: https://imgur.com/ | https://www.youtube.com/ или любой другой фото/видео-хостинг")
                 .build();
 
-        Modal modal = Modal.create("discordsubjectmodal", "Жалоба на пользователя дискорд")
+        Modal modal = Modal.create("discordsubjectmodal", "Жалоба на пользователя Discord")
                 .addComponents(ActionRow.of(DiscordSubject), ActionRow.of(DiscordSubjectDescription), ActionRow.of(DiscordSubjectURL))
                 .build();
         event.replyModal(modal).queue();
@@ -50,7 +50,7 @@ public class TicketModal {
 
     public void sendquestionModal(ButtonInteractionEvent event) {
         TextInput IngameSubjectDescription = TextInput.create("questiondescription", "Опишите ваш вопрос", TextInputStyle.PARAGRAPH)
-                .setPlaceholder("Пример: Как купить здание")
+                .setPlaceholder("Пример: Как зарегистрировать государство?")
                 .build();
 
         Modal modal = Modal.create("questionmodal", "Вопрос о сервере")

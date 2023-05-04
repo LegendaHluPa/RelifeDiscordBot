@@ -28,7 +28,7 @@ public class Main {
 
         jda.updateCommands().addCommands(
                 Commands.slash("guide", "Информация о командах бота"),
-                Commands.slash("setupticket", "Настроить тикет")
+                Commands.slash("setupticket", "Создать панель тикетов")
         ).queue();
 
         String fileName = "settings.txt";
