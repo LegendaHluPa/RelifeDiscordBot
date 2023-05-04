@@ -9,13 +9,14 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 public class SetupTicket {
 
     public void setup(SlashCommandInteractionEvent event) {
         event.reply("Успешно").setEphemeral(true).queue();
 
-        event.getGuild().createTextChannel("Вопросы и Жалобы").queue(textChannel -> {
+        Objects.requireNonNull(event.getGuild()).createTextChannel("Вопросы и Жалобы").queue(textChannel -> {
             EmbedBuilder embedBuilder = new EmbedBuilder();
             embedBuilder.setColor(new Color(255, 212, 60));
             embedBuilder.setDescription("Это страница обратной связи ReLifeMC. \n" +
