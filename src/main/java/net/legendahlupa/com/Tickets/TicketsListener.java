@@ -1,5 +1,6 @@
 package net.legendahlupa.com.Tickets;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
@@ -7,8 +8,11 @@ import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.managers.channel.ChannelManager;
 
+import java.awt.*;
 import java.io.*;
+import java.net.URL;
 import java.util.*;
+import java.util.List;
 
 import static net.dv8tion.jda.api.Permission.ADMINISTRATOR;
 import static net.dv8tion.jda.api.Permission.VIEW_CHANNEL;
@@ -46,6 +50,7 @@ public class TicketsListener extends ListenerAdapter {
                 int number = Integer.parseInt(line);
                 String subject = event.getValue("ingamesubject").getAsString();
                 String description = event.getValue("ingamedescription").getAsString();
+                String url = event.getValue("ingameurl").getAsString();
                 number++;
                 reader.close();
                 BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -53,7 +58,14 @@ public class TicketsListener extends ListenerAdapter {
                 writer.close();
                 event.getGuild().getCategoryById(event.getGuild().getCategoriesByName("Открытые жалобы", true).get(0).getId()).createTextChannel("Жалоба номер " + number).queue(textChannel -> {
                     event.reply("Ваша жалоба успешно создана -->" + textChannel.getJumpUrl()).setEphemeral(true).queue();
-                    textChannel.getManager().putMemberPermissionOverride(event.getMember().getIdLong(), Collections.singleton(VIEW_CHANNEL), Collections.singleton(ADMINISTRATOR));
+                    textChannel.getManager().putMemberPermissionOverride(event.getMember().getIdLong(), Collections.singleton(VIEW_CHANNEL), Collections.singleton(null)).queue();
+
+                    EmbedBuilder embedBuilder = new EmbedBuilder();
+                    embedBuilder.setColor(new Color(255, 212, 60));
+                    embedBuilder.setTitle("Нарушитель: " + subject);
+                    embedBuilder.setDescription("Описание: " + description + "\n" + "Доказательство: " + url);
+
+                    textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
                 });
             } catch (IOException e) {
                 System.out.println("Произошла ошибка при чтении в файла: " + e.getMessage());

@@ -17,8 +17,11 @@ public class TicketModal {
                 .setPlaceholder("Пример: Гриферство")
                 .build();
 
+        TextInput IngameSubjectURL = TextInput.create("ingameurl", "Доказательство ", TextInputStyle.PARAGRAPH)
+                .setPlaceholder("Пример: https://imgur.com/ | https://www.youtube.com/")
+                .build();
         Modal modal = Modal.create("ingamesubjectmodal", "Жалоба на игрока сервера")
-                .addComponents(ActionRow.of(IngameSubject), ActionRow.of(IngameSubjectDescription))
+                .addComponents(ActionRow.of(IngameSubject), ActionRow.of(IngameSubjectDescription), ActionRow.of(IngameSubjectURL))
                 .build();
         event.replyModal(modal).queue();
 
