@@ -38,9 +38,12 @@ public class TicketModal {
         TextInput DiscordSubjectDescription = TextInput.create("discorddescription", "Описание нарушения", TextInputStyle.PARAGRAPH)
                 .setPlaceholder("Пример: Оскобительный ник")
                 .build();
+        TextInput DiscordSubjectURL = TextInput.create("discordurl", "Доказательство", TextInputStyle.PARAGRAPH)
+                .setPlaceholder("Пример: https://www.youtube.com/ или ссылка на сообщение")
+                .build();
 
         Modal modal = Modal.create("discordsubjectmodal", "Жалоба на пользователя дискорд")
-                .addComponents(ActionRow.of(DiscordSubject), ActionRow.of(DiscordSubjectDescription))
+                .addComponents(ActionRow.of(DiscordSubject), ActionRow.of(DiscordSubjectDescription), ActionRow.of(DiscordSubjectURL))
                 .build();
         event.replyModal(modal).queue();
     }

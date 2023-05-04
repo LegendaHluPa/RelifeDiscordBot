@@ -31,8 +31,7 @@ public class Main {
                 Commands.slash("setupticket", "Настроить тикет")
         ).queue();
 
-        String fileName = "TicketNumber.txt";
-        int value = 0;
+        String fileName = "settings.txt";
 
         File file = new File(fileName);
         if (!file.exists()){
@@ -43,7 +42,7 @@ public class Main {
             }
             try {
                 FileWriter writer = new FileWriter(fileName);
-                writer.write(value);
+                writer.write("number: 0\nopenid: null\ncloseid: null\n");
                 writer.close();
                 System.out.println("Значение успешно записано в файл.");
             } catch (IOException e) {
